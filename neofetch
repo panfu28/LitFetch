@@ -229,8 +229,8 @@ cpu_speed="on"
 # Support: 'physical' doesn't work on BSD.
 #
 # Example:
-# logical:  'Intel i7-6500U (4) @ 3.1GHz' (All virtual cores)
-# physical: 'Intel i7-6500U (2) @ 3.1GHz' (All physical cores)
+# logical:  'Intel i7-6500U (4) @ 3.1GHz' (virtual cores)
+# physical: 'Intel i7-6500U (2) @ 3.1GHz' (physical cores)
 # off:      'Intel i7-6500U @ 3.1GHz'
 cpu_cores="logical"
 
@@ -239,7 +239,7 @@ cpu_cores="logical"
 # Note the temperature is added to the regular CPU function.
 #
 # Default: 'off'
-# Values:  'C', 'F', 'off'
+# Values:  'C', 'off'
 # Flag:    --cpu_temp
 # Supports: Linux, BSD
 # NOTE: For NetBSD-based systems, you'll need to enable
@@ -247,7 +247,6 @@ cpu_cores="logical"
 #
 # Example:
 # C:   'Intel i7-6500U (4) @ 3.1GHz [27.2°C]'
-# F:   'Intel i7-6500U (4) @ 3.1GHz [82.0°F]'
 # off: 'Intel i7-6500U (4) @ 3.1GHz'
 cpu_temp="off"
 
@@ -1035,6 +1034,7 @@ get_model() {
     model=${model//To be filled by O.E.M.}
     model=${model//To Be Filled*}
     model=${model//OEM*}
+    model=${model//20AW0049AR}
     model=${model//Not Applicable}
     model=${model//System Product Name}
     model=${model//System Version}
@@ -1857,9 +1857,6 @@ get_cpu() {
     # Add CPU temp to the output.
     if [[ "$cpu_temp" != "off" && "$deg" ]]; then
         deg="${deg//.}"
-
-        # Convert to Fahrenheit if enabled
-        [[ "$cpu_temp" == "F" ]] && deg="$((deg * 90 / 50 + 320))"
 
         # Format the output
         deg="[${deg/${deg: -1}}.${deg: -1}°${cpu_temp:-C}]"
