@@ -1469,7 +1469,6 @@ get_wm() {
 
         # Rename window managers to their proper values.
         [[ $wm == *WINDOWMAKER* ]]   && wm=wmaker
-        [[ $wm == *"GNOME Shell"* ]] && wm=Mutter
 
         # Fallback for non-EWMH WMs.
         [[ $wm ]] ||
@@ -2149,7 +2148,6 @@ get_song() {
         "gogglesmm"
         "guayadeque"
         "io.elementary.music"
-        "iTunes"
         "juk"
         "lollypop"
         "mocp"
@@ -2437,9 +2435,6 @@ get_style() {
         if [[ -z "$gtk3_theme" ]]; then
             if [[ -f "${XDG_CONFIG_HOME}/gtk-3.0/settings.ini" ]]; then
                 gtk3_theme="$(grep "^[^#]*$name" "${XDG_CONFIG_HOME}/gtk-3.0/settings.ini")"
-
-            elif type -p gsettings >/dev/null; then
-                gtk3_theme="$(gsettings get org.gnome.desktop.interface "$gsettings")"
 
             elif [[ -f "/usr/share/gtk-3.0/settings.ini" ]]; then
                 gtk3_theme="$(grep "^[^#]*$name" /usr/share/gtk-3.0/settings.ini)"
