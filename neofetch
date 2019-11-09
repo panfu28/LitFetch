@@ -425,7 +425,6 @@ disk_subtitle="mount"
 # gogglesmm
 # guayadeque
 # io.elementary.music
-# iTunes
 # juk
 # lollypop
 # mocp
@@ -478,9 +477,6 @@ song_shorthand="off"
 # Default:  ''
 # Example: mpc_args=(-h HOST -P PASSWORD)
 mpc_args=()
-
-
-# Text Colors
 
 
 # Text Colors
@@ -995,7 +991,7 @@ get_distro() {
 
 get_model() {
     case $os in
-        Linux)
+	Linux)
             if [[ -d /system/app/ && -d /system/priv-app ]]; then
                 model="$(getprop ro.product.brand) $(getprop ro.product.model)"
 
@@ -1011,8 +1007,8 @@ get_model() {
                 model=$(< /tmp/sysinfo/model)
             fi
         ;;
-
-        BSD|MINIX)
+	
+	BSD|MINIX)
             model=$(sysctl -n hw.vendor hw.product)
         ;;
 
@@ -1050,8 +1046,8 @@ get_model() {
     model=${model//�}
 
     case $model in
-        "Standard PC"*) model="KVM/QEMU (${model})" ;;
-        "OpenBSD"*)     model="vmm ($model)" ;;
+	"Standard PC"*) model="KVM/QEMU (${model})" ;;
+	"OpenBSD"*)     model="vmm ($model)" ;;
     esac
 }
 
