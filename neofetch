@@ -6446,43 +6446,6 @@ ${c1} `----------`
 EOF
         ;;
 
-        "freebsd_small")
-            set_colors 1 7 3
-            read -rd '' ascii_data <<'EOF'
-${c1}/\\,-'''''-,/\\
-\\_)       (_/
-|           |
-|           |
- ;         ;
-  '-_____-'
-EOF
-        ;;
-
-        FreeBSD*|HardenedBSD*)
-            case $ascii_distro in
-                *HardenedBSD*) set_colors 4 7 3 ;;
-                *)             set_colors 1 7 3
-            esac
-
-            read -rd '' ascii_data <<'EOF'
-   ${c2}```                        ${c1}`
-  ${c2}` `.....---...${c1}....--.```   -/
-  ${c2}+o   .--`         ${c1}/y:`      +.
-  ${c2} yo`:.            ${c1}:o      `+-
-    ${c2}y/               ${c1}-/`   -o/
-   ${c2}.-                  ${c1}::/sy+:.
-   ${c2}/                     ${c1}`--  /
-  ${c2}`:                          ${c1}:`
-  ${c2}`:                          ${c1}:`
-   ${c2}/                          ${c1}/
-   ${c2}.-                        ${c1}-.
-    ${c2}--                      ${c1}-.
-     ${c2}`:`                  ${c1}`:`
-       .--             `--.
-          .---.....----.
-EOF
-        ;;
-
         "FreeMiNT"*)
             # Don't explicitly set colors since
             # TosWin2 doesn't reset well.
