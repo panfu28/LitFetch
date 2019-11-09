@@ -1636,28 +1636,6 @@ get_wm_theme() {
             wm_theme="${wm_theme/theme=}"
         ;;
 
-        "Quartz Compositor")
-            global_preferences="${HOME}/Library/Preferences/.GlobalPreferences.plist"
-            wm_theme="$(PlistBuddy -c "Print AppleInterfaceStyle" "$global_preferences")"
-            wm_theme_color="$(PlistBuddy -c "Print AppleAccentColor" "$global_preferences")"
-
-            [[ -z "$wm_theme" ]] && \
-                wm_theme="Light"
-
-            case $wm_theme_color in
-                "-1") wm_theme_color="Graphite" ;;
-                "0") wm_theme_color="Red" ;;
-                "1") wm_theme_color="Orange" ;;
-                "2") wm_theme_color="Yellow" ;;
-                "3") wm_theme_color="Green" ;;
-                "5") wm_theme_color="Purple" ;;
-                "6") wm_theme_color="Pink" ;;
-                *) wm_theme_color="Blue" ;;
-            esac
-
-            wm_theme="${wm_theme_color} ($wm_theme)"
-        ;;
-
         *"Explorer")
             path="/proc/registry/HKEY_CURRENT_USER/Software/Microsoft"
             path+="/Windows/CurrentVersion/Themes/CurrentTheme"
@@ -2552,13 +2530,6 @@ get_font() {
 
 get_term() {
 
-    case $TERM_PROGRAM in
-        "iTerm.app")    term="iTerm2" ;;
-        "Terminal.app") term="Apple Terminal" ;;
-        "Hyper")        term="HyperTerm" ;;
-        *)              term="${TERM_PROGRAM/\.app}" ;;
-    esac
-
     # Most likely TosWin2 on FreeMiNT - quick check
     [[ "$TERM" == "tw52" || "$TERM" == "tw100" ]] && term="TosWin2"
     [[ "$SSH_CONNECTION" ]] && term="$SSH_TTY"
@@ -2618,13 +2589,6 @@ get_term_font() {
             term_font="${term_font/*family:}"
             term_font="${term_font/$'\n'*}"
             term_font="${term_font/\#*}"
-        ;;
-
-        "Apple_Terminal")
-            term_font="$(osascript <<END
-                         tell application "Terminal" to font name of window frontmost
-END
-)"
         ;;
 
         "iTerm2")
@@ -9131,8 +9095,6 @@ main() {
         display_image
         sleep 1
     done
-
     return 0
 }
-
 main "$@"
