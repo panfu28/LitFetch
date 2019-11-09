@@ -5,5 +5,5 @@ FreeBSD<br>
 Gnome<br>
 
 Because i think said software shouldn't be used, the lines of code refering to them is a waste of space.<br>
-The removal of these LOC (537 of them) made this fork 19 KB lighter.<br>
+The removal of these LOC (541 of them) made this fork 20 KB lighter.<br>
 (I also deleted some copyright comments)
