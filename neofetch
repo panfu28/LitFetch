@@ -23,26 +23,26 @@ read -rd '' config <<'EOF'
 # See this wiki page for more info:
 # https://github.com/dylanaraps/neofetch/wiki/Customizing-Info
 print_info() {
-    info title
-    info underline
+	info title
+	info underline
 
-    info "OS" distro
-    info "Host" model
-    info "Kernel" kernel
-    info "Uptime" uptime
-    info "Packages" packages
-    info "Shell" shell
-    info "Resolution" resolution
-    info "DE" de
-    info "WM" wm
-    info "WM Theme" wm_theme
-    info "Theme" theme
-    info "Icons" icons
-    info "Terminal" term
-    info "Terminal Font" term_font
-    info "CPU" cpu
-    info "GPU" gpu
-    info "Memory" memory
+	info "OS" distro
+	info "Host" model
+	info "Kernel" kernel
+	info "Uptime" uptime
+	info "Packages" packages
+	info "Shell" shell
+	info "Resolution" resolution
+	info "DE" de
+	info "WM" wm
+	info "WM Theme" wm_theme
+	info "Theme" theme
+	info "Icons" icons
+	info "Terminal" term
+	info "Terminal Font" term_font
+	info "CPU" cpu
+	info "GPU" gpu
+	info "Memory" memory
 
     # info "GPU Driver" gpu_driver  # Linux only
     # info "CPU Usage" cpu_usage
@@ -790,10 +790,9 @@ EOF
 # DETECT INFORMATION
 
 get_os() {
-    # $kernel_name is set in a function called cache_uname and is
-    # just the output of "uname -s".
-    case $kernel_name in
-        Darwin):   "$darwin_name" ;;
+	# $kernel_name is set in a function called cache_uname and is
+	# just the output of "uname -s".
+	case $kernel_name in
         SunOS):    Solaris ;;
         Haiku):    Haiku ;;
         MINIX):    MINIX ;;
